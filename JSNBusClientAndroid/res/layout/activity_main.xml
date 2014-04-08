@@ -9,11 +9,68 @@
     tools:context=".MainActivity" >
 
     <Button
+        android:id="@+id/main_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Open" />
+
+    <Button
+        android:id="@+id/main_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/main_send"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/main_send"
+        android:text="Close" />
+
+    <Button
         android:id="@+id/main_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:layout_below="@+id/main_open"
         android:text="Send" />
+
+    <Button
+        android:id="@+id/main_start_bus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/main_close"
+        android:layout_alignRight="@+id/main_close"
+        android:layout_below="@+id/main_close"
+        android:text="Start A Bus" />
+
+    <Button
+        android:id="@+id/main_stop_bus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/main_start_bus"
+        android:layout_alignRight="@+id/main_start_bus"
+        android:layout_below="@+id/main_start_bus"
+        android:text="Stop a Bus" />
+
+    <Button
+        android:id="@+id/main_register"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/main_stop_bus"
+        android:layout_alignRight="@+id/main_stop_bus"
+        android:layout_below="@+id/main_stop_bus"
+        android:text="Register" />
+
+    <Button
+        android:id="@+id/main_unregister"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/main_register"
+        android:layout_alignRight="@+id/main_register"
+        android:layout_below="@+id/main_register"
+        android:text="Unregister" />
 
 </RelativeLayout>
