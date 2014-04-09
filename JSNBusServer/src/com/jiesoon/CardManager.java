@@ -9,6 +9,13 @@ public class CardManager {
 		mManager = new ArrayList<Card>();
 	}
 	
+	public void init(){
+		mManager.add(new Card("1001", "Jiesoon", 100, "2000-10-8", "male"));
+		mManager.add(new Card("1002", "Tom", 110, "2000-7-8", "male"));
+		mManager.add(new Card("1003", "Lucy", 200, "2000-5-8", "female"));
+		mManager.add(new Card("1004", "Jim", 300, "2000-7-16", "male"));
+	}
+	
 	public int size(){
 		return mManager.size();
 	}

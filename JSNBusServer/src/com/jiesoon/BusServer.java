@@ -37,6 +37,8 @@ public class BusServer {
 		CardManager cm = new CardManager();
 		NewsManager nm = new NewsManager();
 		
+		cm.init();
+		nm.init();
 		try {
 			
 			ServerSocket serverSocket = new ServerSocket(7798);
@@ -154,6 +156,67 @@ public class BusServer {
 							writer.newLine();
 							writer.flush();
 
+							break;
+							
+						case Message.MSG_ADD:
+							String cardId = o.getString("_cardId");
+							money = o.getInt("_money");
+							
+							AddRes ar = new AddRes();
+							Card result = cm.find(cardId);
+							if(result == null){
+								ar.buildRes("400", "Not a valid card!");
+							}
+							else{
+								ar.buildRes("200", "OK");
+								
+								result.show();
+								result.add(money);
+								result.show();
+							}
+							
+							writer.write(ar.toString());
+							writer.newLine();
+							writer.flush();
+							
+							break;
+							
+						case Message.MSG_SUB:
+							cardId = o.getString("_cardId");
+							money = o.getInt("_money");
+							
+							SubRes sr = new SubRes();
+							
+							result = cm.find(cardId);
+							if(result == null){
+								sr.buildRes("400", "Invalid card!");
+							}
+							else{
+								sr.buildRes("200", "OK");
+								result.sub(money);
+							}
+							
+							writer.write(sr.toString());
+							writer.newLine();
+							writer.flush();
+							
+							break;
+							
+						case Message.MSG_NEWS:
+							String allNews = nm.getAllNews();
+							NewsRes nr = new NewsRes();
+							
+							if(allNews != null){
+								nr.buildRes("200", allNews);
+							}
+							else{
+								nr.buildRes("400", null);
+							}
+							
+							writer.write(nr.toString());
+							writer.newLine();
+							writer.flush();
+							
 							break;
 						default:
 							;

@@ -29,6 +29,11 @@ public class MainActivity extends Activity {
 	private Button mRegister;
 	private Button mUnregister;
 	
+	private Button mAdd;
+	private Button mSub;
+	
+	private Button mNews;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,133 @@ public class MainActivity extends Activity {
 		mStopABus = (Button)findViewById(R.id.main_stop_bus);
 		mRegister = (Button)findViewById(R.id.main_register);
 		mUnregister = (Button)findViewById(R.id.main_unregister);
+		mAdd = (Button)findViewById(R.id.main_add);
+		mSub = (Button)findViewById(R.id.main_sub);
+		mNews = (Button)findViewById(R.id.main_news);
+
+		mNews.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+				
+				new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						BufferedWriter writer = null;
+						BufferedReader reader = null;
+						try {
+							 writer = new BufferedWriter(new OutputStreamWriter(mClient.getOutputStream()));
+							 reader = new BufferedReader(new InputStreamReader(mClient.getInputStream()));
+						 
+							 NewsMessage nm  = new NewsMessage();
+							 nm.buildMsg();
+							 
+							 writer.write(nm.toString());
+							 writer.newLine();
+							 writer.flush();
+							 
+							 //waiting for data from server
+							 String res = reader.readLine();
+							 Log.d(TAG, "res: " + res.toString());
+							 
+						} catch (IOException e2) {
+							e2.printStackTrace();
+						}						
+					}
+				}).start();
+				
+
+				
+				
+
+			
+			}
+		});
+		
+
+		mSub.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+				
+				new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						BufferedWriter writer = null;
+						BufferedReader reader = null;
+						try {
+							 writer = new BufferedWriter(new OutputStreamWriter(mClient.getOutputStream()));
+							 reader = new BufferedReader(new InputStreamReader(mClient.getInputStream()));
+						 
+							 SubMessage addMsg = new SubMessage();
+							 addMsg.buildMsg("1002", 1);
+							 
+							 writer.write(addMsg.toString());
+							 writer.newLine();
+							 writer.flush();
+							 
+							 //waiting for data from server
+							 String res = reader.readLine();
+							 Log.d(TAG, "res: " + res.toString());
+							 
+						} catch (IOException e2) {
+							e2.printStackTrace();
+						}						
+					}
+				}).start();
+				
+
+				
+				
+
+			
+			}
+		});
+		
+		mAdd.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+				
+				new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						BufferedWriter writer = null;
+						BufferedReader reader = null;
+						try {
+							 writer = new BufferedWriter(new OutputStreamWriter(mClient.getOutputStream()));
+							 reader = new BufferedReader(new InputStreamReader(mClient.getInputStream()));
+						 
+							 AddMessage addMsg = new AddMessage();
+							 addMsg.buildMsg("1002", 115);
+							 
+							 writer.write(addMsg.toString());
+							 writer.newLine();
+							 writer.flush();
+							 
+							 //waiting for data from server
+							 String res = reader.readLine();
+							 Log.d(TAG, "res: " + res.toString());
+							 
+						} catch (IOException e2) {
+							e2.printStackTrace();
+						}						
+					}
+				}).start();
+				
+
+				
+				
+
+			
+			}
+		});
 		
 		mRegister.setOnClickListener(new OnClickListener() {
 			

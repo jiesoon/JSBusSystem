@@ -73,4 +73,31 @@
         android:layout_below="@+id/main_register"
         android:text="Unregister" />
 
+    <Button
+        android:id="@+id/main_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/main_unregister"
+        android:layout_alignRight="@+id/main_unregister"
+        android:layout_below="@+id/main_unregister"
+        android:text="Add" />
+
+    <Button
+        android:id="@+id/main_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/main_add"
+        android:layout_alignRight="@+id/main_add"
+        android:layout_below="@+id/main_add"
+        android:text="Sub" />
+
+    <Button
+        android:id="@+id/main_news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/main_sub"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/main_sub"
+        android:text="News" />
+
 </RelativeLayout>
